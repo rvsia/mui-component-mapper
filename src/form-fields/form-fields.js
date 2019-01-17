@@ -14,7 +14,7 @@ import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import MuiSelect from './select-field';
 
-import { MuiPickersUtilsProvider, TimePicker, DateTimePicker, DatePicker } from 'material-ui-pickers';
+import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import MomentUtils from '@date-io/moment';
 
 import './form-fields.scss';
@@ -64,17 +64,19 @@ const selectComponent = ({
       required={ isRequired }
       helperText={ helperText }
       disabled={ isDisabled }
-      readOnly={ isReadOnly }
       label={ label }
       placeholder={ placeholder }
       fullWidth
       multiline
+      inputProps={{
+        readOnly: isReadOnly,
+      }}
       { ...rest }
     />
   ),
   [componentTypes.CHECKBOX]: () => (
     <FormControlLabel
-      control={ <Checkbox { ...input } value={ input.name } /> }
+      control={ <Checkbox { ...input } disabled={ isDisabled } value={ input.name } /> }
       label={ label }
     />
   ),
@@ -91,7 +93,10 @@ const selectComponent = ({
             render={ ({ input }) => (
               <FormControlLabel
                 value="female"
-                control={ <MuiRadio { ...input } onChange={ () => input.onChange(option.value) }/> }
+                control={ <MuiRadio
+                  { ...input }
+                  disabled={ isDisabled }
+                  onChange={ () => input.onChange(option.value) }/> }
                 label={ option.label }
               />
             ) }
@@ -114,6 +119,7 @@ const selectComponent = ({
       closeMenuOnSelect={ !rest.multi }
       noOptionsMessage={ () => 'No option found' }
       invalid={ invalid }
+      isDisabled={ isDisabled }
       textFieldProps={{
         label,
         color: invalid ? 'red' : 'blue',

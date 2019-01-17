@@ -91,6 +91,7 @@ function Control(props) {
       }}
       error={ props.selectProps.error }
       { ...props.selectProps.textFieldProps }
+      disabled={ props.selectProps.isDisabled }
     />
   );
 }
@@ -198,6 +199,7 @@ class IntegrationReactSelect extends React.Component {
             components={ components }
             error={ !!invalid }
             { ...rest }
+            isDisabled={ !!rest.isDisabled }
           />
         </NoSsr>
       </div>
