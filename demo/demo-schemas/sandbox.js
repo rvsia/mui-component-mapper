@@ -36,7 +36,7 @@ const output = {
                   condition: {
                     when: 'text_box_1',
                     is: true,
-                  }
+                  },
                 },
                 {
                   name: 'text_box_1111',
@@ -156,9 +156,13 @@ const output = {
                 },
                 {
                   name: 'check_box_2',
-                  label: 'Check Box checked',
-                  title: 'Check Box checked',
+                  label: 'Do you like?',
                   component: components.CHECKBOX,
+                  options: [
+                    { label: 'Dogs', value: '1' },
+                    { label: 'Cats', value: '2' },
+                    { label: 'Hamsters', value: '3' },
+                  ],
                 },
               ],
               component: components.SUB_FORM,

@@ -25,7 +25,7 @@ const App = () => (
             alignItems="center"
         >
             <Grid item xs={8}>
-                <Typography variant="h3" >Pf3 component mapper</Typography>
+                <Typography variant="h3" >Material UI component mapper</Typography>
             </Grid>
             <Grid item xs={8}>
                 <FormRenderer
