@@ -5,16 +5,22 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
   - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
   - yarn install
+install:
+  - npm install -g codecov
 script:
-  - yarn test
+  - yarn test-ci
   - yarn build
+after_success:
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]] && [[ $TRAVIS_BRANCH == 'master' ]]; then
+      chmod ugo+x ./scripts/update_demo.sh;
+      bash ./scripts/update_demo.sh;
+    fi
 cache:
   yarn: true
   directories:
-    - node_modules
+    - ~/.npm
 git:
   depth: 1
-
 deploy:
   - provider: script
     on:
@@ -22,4 +28,3 @@ deploy:
     script:
     - npx semantic-release
     skip_cleanup: true
-    
