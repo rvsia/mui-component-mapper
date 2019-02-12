@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { layoutComponents } from '@data-driven-forms/react-form-renderer';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const ArrayFieldWrapper = ({ children }) => (
   <div style={{
@@ -30,6 +31,12 @@ const layoutMapper = {
   [layoutComponents.ICON]: props => <div>Icon</div>,
   [layoutComponents.ARRAY_FIELD_WRAPPER]: props => <div>Array field</div>,
   [layoutComponents.HELP_BLOCK]: props => <div>Help block</div>,
+  [layoutComponents.TITLE]: ({ children }) => <Typography component="h3" variant="h3" gutterBottom>
+    { children }
+  </Typography>,
+  [layoutComponents.DESCRIPTION]: ({ children }) => <Typography variant="body1" gutterBottom>
+    { children }
+  </Typography>,
 };
 
 export default layoutMapper;
