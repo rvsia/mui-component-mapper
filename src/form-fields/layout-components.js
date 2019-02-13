@@ -31,12 +31,16 @@ const layoutMapper = {
   [layoutComponents.ICON]: props => <div>Icon</div>,
   [layoutComponents.ARRAY_FIELD_WRAPPER]: props => <div>Array field</div>,
   [layoutComponents.HELP_BLOCK]: props => <div>Help block</div>,
-  [layoutComponents.TITLE]: ({ children }) => <Typography component="h3" variant="h3" gutterBottom>
-    { children }
-  </Typography>,
-  [layoutComponents.DESCRIPTION]: ({ children }) => <Typography variant="body1" gutterBottom>
-    { children }
-  </Typography>,
+  [layoutComponents.TITLE]: ({ children }) => <Grid item xs={ 12 }>
+    <Typography variant="h3" gutterBottom>
+      { children }
+    </Typography>
+  </Grid>,
+  [layoutComponents.DESCRIPTION]: ({ children }) => <Grid item xs={ 12 }>
+    <Typography variant="body1" gutterBottom>
+      { children }
+    </Typography>
+  </Grid>,
 };
 
 export default layoutMapper;
